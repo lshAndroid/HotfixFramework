@@ -51,22 +51,6 @@ butterknife_version=8.5.1
 pro_timber=4.5.1
 
 ```
-(2)在project中添加:
-```
-dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
-        
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-        //热修复功能添加
-        classpath "com.tencent.bugly:tinker-support:${BUGLY_TINKER_SUPPORT}"
-    }
-```
-(3)在module中添加依赖
-```
-dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
-    }
-```
-(4)在module中粘贴tinker-support.gradle文件
+
+
 
