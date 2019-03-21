@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion Integer.parseInt(pro_compileSdkVersion)
+    defaultConfig {
+        minSdkVersion Integer.parseInt(pro_minSdkVersion)
+        targetSdkVersion Integer.parseInt(pro_compileSdkVersion)
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+//        // 开启multidex  //主工程
+//        multiDexEnabled true
+//        ndk {//主工程
+//            //设置支持的SO库架构，如需更多架构，请去bugly官网下载放到libs目录下，并设置好对应CUP架构（需要与主工程一致）
+//            abiFilters 'armeabi', 'armeabi-v7a' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//        }
+
+        manifestPlaceholders = [//用于 provider  android:name="android.support.v4.content.FileProvider"
+                FILEPROVIDER_AUTHORITIES: FILEPROVIDER_AUTHORITIES
+        ]
+    }
+
+    buildTypes {
+        release {
+            buildConfigField("String","BUGLYIDBUILD","\"${BUGLY_ID}\"")//获取gradle.properties中存着的BUGLY_ID
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField("String","BUGLYIDBUILD","\"${BUGLY_ID}\"")//获取gradle.properties中存着的BUGLY_ID
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    sourceSets {//主工程
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    repositories {//主工程
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${pro_appcompatVersion}"
+    implementation "com.android.support.constraint:constraint-layout:${pro_constraint}"
+    testImplementation "junit:junit:${pro_junit}"
+    androidTestImplementation "com.android.support.test:runner:${pro_runner}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${pro_espresso}"
+
+    //compile 'com.tencent.bugly:crashreport:latest.release'//其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.3.4
+    api "com.tencent.bugly:crashreport_upgrade:${BUGLY_CRASHREPORT_UPGRADE}"
+    api "com.tencent.tinker:tinker-android-lib:${TINKER_VERSION}"
+    api "com.android.support:multidex:${MUTIDEX_VERSION}"  // 多dex配置
+}

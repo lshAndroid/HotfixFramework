@@ -1,0 +1,111 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion Integer.parseInt(pro_compileSdkVersion)
+    defaultConfig {
+        applicationId "lsh.com.hotfixframework"
+        minSdkVersion Integer.parseInt(pro_minSdkVersion)
+        targetSdkVersion Integer.parseInt(pro_compileSdkVersion)
+        versionCode Integer.parseInt(pro_versionCode)
+        versionName pro_versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //----热修复功能(开始)
+        if ("true".equals(TINKER_ENABLE)) {
+            multiDexEnabled true  // 开启multidex
+        }
+        ndk {//通用
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+        //----热修复功能(结束)
+    }
+
+//-----------------------热修复功能(开始)
+    // 签名配置
+    signingConfigs {
+        release {
+            try {
+                storeFile file("./keystore/release.keystore")
+                storePassword "testres"
+                keyAlias "testres"
+                keyPassword "testres"
+            } catch (ex) {
+//                throw new InvalidUserDataException(ex.toString())
+            }
+        }
+
+        debug {
+            storeFile file("./keystore/debug.keystore")
+        }
+    }
+    // 构建类型
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+// 编译选项
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    // recommend
+    dexOptions {
+        jumboMode = true
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    // 多渠道配置
+    /*flavorDimensions "tier"
+     productFlavors {
+         xiaomi {
+             dimension "tier"
+         }
+         yyb {
+             dimension "tier"
+         }
+
+         wdj {
+             dimension "tier"
+         }
+     }*/
+//-----------------------热修复功能(结束)
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:${pro_appcompatVersion}"
+    implementation "com.android.support.constraint:constraint-layout:${pro_constraint}"
+    testImplementation "junit:junit:${pro_junit}"
+    androidTestImplementation "com.android.support.test:runner:${pro_runner}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${pro_espresso}"
+    if ("true".equals(TINKER_ENABLE)) {
+        implementation project(':libtinker')//热修复功能
+        implementation files('libs/testSo.jar')
+    }
+
+}
+//----热修复功能(开始)
+if ("true".equals(TINKER_ENABLE)) {
+    apply from: 'tinker-support.gradle'
+}
+//----热修复功能(结束)

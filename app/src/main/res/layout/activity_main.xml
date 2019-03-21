@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+       >
+
+    <TextView
+            android:text="当前版本:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCurrentVersion"/>
+
+    <Button
+            android:id="@+id/btnShowToast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showToast"
+            android:layout_marginTop="14dp"/>
+
+    <Button
+            android:id="@+id/btnLoadPatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loadPatch"
+    />
+    <Button
+            android:id="@+id/btnLoadLibrary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loadLibrary"
+    />
+    <Button
+            android:id="@+id/btnDownloadPatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userDownload"
+    />
+    <Button
+            android:id="@+id/btnPatchDownloaded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userPatch"
+    />
+    <Button
+            android:id="@+id/btnCheckUpgrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/checkUpgrade"/>
+    <Button
+            android:id="@+id/btnKillSelf"
+            android:text="退出程序"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+</LinearLayout>
