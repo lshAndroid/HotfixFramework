@@ -13,6 +13,7 @@
 compile 'com.tencent.bugly:crashreport_upgrade:1.3.6'
 compile 'com.tencent.tinker:tinker-android-lib:1.9.9'
 常见问题：
+  apkdemo在apktest文件夹中
 
 <img src="https://github.com/lshAndroid/HotfixFramework/blob/master/image/image1.jpg" width="400px" height="800px"/>
 <img src="https://github.com/lshAndroid/HotfixFramework/blob/master/image/image2.jpg" width="400px" height="800px"/>
