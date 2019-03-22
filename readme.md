@@ -7,7 +7,7 @@
 	pradle.properties（集中管理版本）
 ```
 
-注：本项目采用As 3.3.3新建项目，对bugly的tinker做了二次封装。更加详细内容请参考官方文档http://bugly.qq.com/androidfast
+注：本项目采用As3.3.2新建项目，对bugly的tinker做了二次封装。更加详细内容请参考官方文档http://bugly.qq.com/androidfast
 
 ----tinker调用版本方案:
 compile 'com.tencent.bugly:crashreport_upgrade:1.3.6'
@@ -18,8 +18,10 @@ compile 'com.tencent.tinker:tinker-android-lib:1.9.9'
 <img src="https://github.com/lshAndroid/HotfixFramework/blob/master/image/image1.jpg" width="400px" height="800px"/>
 <img src="https://github.com/lshAndroid/HotfixFramework/blob/master/image/image2.jpg" width="400px" height="800px"/>
 
-4. 可能引用了较新的gradle版本，可以修改成低版本
+好处:build.gradle的封装,以及代码和 androidmanifest的涉及代码封装,让主项目彻底脱离tinker的各种配置,同时修改编译只需要在一处gradle.properties修改方便快捷省时省事.
 如：
+
+
 (1)添加gradle.properties版本号:
 ```
 #热修复（开始）
