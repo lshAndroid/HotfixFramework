@@ -24,17 +24,26 @@ compile 'com.tencent.tinker:tinker-android-lib:1.9.9'
 
 (1)添加gradle.properties版本号:
 ```
-#热修复（开始）
-#使用app唯一的包名
-FILEPROVIDER_AUTHORITIES=报名+.fileProvider
-BUGLY_ID=官网软件id
-#bugly版本配置+tinker版本配置
+######热修复（开始）
+#PATCH_PATH:bakapk的基准包文件夹 APK_NAME为apk名字
+PATCH_PATH=app-0321-19-44-37
+APK_NAME=app-release
+
+#软件app的bugly官网填写资料:包名和buglyid
+FILEPROVIDER_AUTHORITIES=lsh.com.hotfixframework.fileProvider
+BUGLY_ID=f52553c7bc
+#bugly的tinker版本号配置
 BUGLY_CRASHREPORT_UPGRADE=1.3.6
 BUGLY_TINKER_SUPPORT=1.1.5
 TINKER_VERSION=1.9.9
 MUTIDEX_VERSION=1.0.2
+TINKER_ENABLE=true
+#后续版本未依赖
+#BUGLY_NATIVECRASHREPORT=3.3.1
+#####热修复（结束）
 
-#热修复（结束）
+
+
 pro_compileSdkVersion = 26
 pro_minSdkVersion = 16
 pro_targetSdkVersion = 26
