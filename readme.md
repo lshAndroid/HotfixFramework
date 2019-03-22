@@ -30,8 +30,8 @@ PATCH_PATH=app-0321-19-44-37
 APK_NAME=app-release
 
 #软件app的bugly官网填写资料:包名和buglyid
-FILEPROVIDER_AUTHORITIES=lsh.com.hotfixframework.fileProvider
-BUGLY_ID=f52553c7bc
+FILEPROVIDER_AUTHORITIES=包名.fileProvider
+BUGLY_ID=官网id
 #bugly的tinker版本号配置
 BUGLY_CRASHREPORT_UPGRADE=1.3.6
 BUGLY_TINKER_SUPPORT=1.1.5
