@@ -54,11 +54,7 @@ pro_constraint = 1.1.2
 pro_junit = 4.12
 pro_runner = 1.0.2
 pro_espresso = 3.0.2
-pro_boolean_minifyEnabled=false
-pro_cotlin_version=1.2.71
-butterknife_version=8.5.1
 
-pro_timber=4.5.1
 
 ```
 
