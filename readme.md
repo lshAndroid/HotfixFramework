@@ -10,8 +10,11 @@
 注：本项目采用As3.3.2新建项目，对bugly的tinker做了二次封装。更加详细内容请参考官方文档http://bugly.qq.com/androidfast
 
 ----tinker调用版本方案:
+
 compile 'com.tencent.bugly:crashreport_upgrade:1.3.6'
+
 compile 'com.tencent.tinker:tinker-android-lib:1.9.9'
+
 常见问题：
   apkdemo在apktest文件夹中
 
